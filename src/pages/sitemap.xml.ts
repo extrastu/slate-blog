@@ -12,7 +12,7 @@ export const GET: APIRoute = async () => {
   });
 
   // 生成文章 URL
-  const postUrls = posts.map((post) => ({
+  const postUrls = posts.map((post: CollectionEntry<'post'>) => ({
     loc: `${site}/blog/${post.slug}`,
     lastmod: post.data.pubDate?.toISOString() || new Date().toISOString(),
     changefreq: 'monthly' as const,
