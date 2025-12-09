@@ -27,7 +27,18 @@ const jsonLd = JSON.stringify({
   author: {
     '@type': 'Person',
     name: author,
+    url: 'https://github.com/extrastu',
   },
+  publisher: {
+    '@type': 'Person',
+    name: 'extrastu',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': Astro.url.href,
+  },
+  keywords: 'AI Vibe, Vibe Coding, AI Tools, Coding Tools, Developer Tools',
+  inLanguage: 'en-US',
 });
 ---
 

@@ -12,10 +12,17 @@ const {
 } = Astro.props;
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'WebPage',
+  '@type': 'WebSite',
   name: title,
   description: description,
+  url: Astro.url.origin,
   image: new URL(image, Astro.url),
+  publisher: {
+    '@type': 'Person',
+    name: 'extrastu',
+  },
+  keywords: 'AI Vibe, Vibe Coding, AI Tools, Coding Tools, Developer Tools, AI Products, Programming Resources, Tech Blog',
+  inLanguage: 'en-US',
 });
 ---
 

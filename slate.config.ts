@@ -7,8 +7,9 @@ export default defineConfig({
   lang: 'en-US',
   site: 'https://aivibe.vercel.app',
   avatar: '/avatar.png',
-  title: 'Ai Vibe',
-  description: 'Coding vibes & what I’m building',
+  title: 'AI Vibe - Vibe Coding & AI Tools Collection',
+  description:
+    'AI Vibe: Discover the best vibe coding tools, AI products, and coding resources. Explore curated collections of AI tools, developer utilities, and productivity apps for modern developers.',
   lastModified: true,
   readTime: true,
   footer: {
