@@ -5,10 +5,10 @@ import { defineConfig } from './src/helpers/config-helper';
 
 export default defineConfig({
   lang: 'en-US',
-  site: 'https://extrastu.vercel.app',
+  site: 'https://aivibe.vercel.app',
   avatar: '/avatar.png',
-  title: 'extrastu',
-  description: 'ai driven developer',
+  title: 'Ai Vibe',
+  description: 'vibe productivity',
   lastModified: true,
   readTime: true,
   footer: {
