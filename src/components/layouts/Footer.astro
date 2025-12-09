@@ -15,7 +15,18 @@ const { copyright = stateConfig.footer?.copyright } = Astro.props;
 <footer class="mt-auto">
   {!!slateConfig.socialLinks && <SocialLinks client:visible />}
   <div class="mt-4 flex items-center justify-between">
-    <div class="text-slate8 text-sm">{copyright}</div>
+    <div class="text-slate8 text-sm">
+      {copyright}
+      <span class="mx-2">·</span>
+      <a 
+        href="https://v0.app/ref/938XEW" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="text-slate8 hover:text-slate11 transition-colors"
+      >
+        Built with v0
+      </a>
+    </div>
     {/* S theme selection */}
     {(stateConfig.theme as ThemeOptions).enableUserChange && <ThemeSelect client:visible />}
     {/* E theme selection */}
