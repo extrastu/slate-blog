@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import slateConfig from '~@/slate.config';
 
@@ -6,8 +7,8 @@ export const GET: APIRoute = async () => {
   const site = slateConfig.site || '';
   
   // 获取所有非草稿文章
-  const posts = await getCollection('post', ({ data }) => {
-    return import.meta.env.DEV || data.draft !== true;
+  const posts = await getCollection('post', (entry: CollectionEntry<'post'>) => {
+    return import.meta.env.DEV || entry.data.draft !== true;
   });
 
   // 生成文章 URL
