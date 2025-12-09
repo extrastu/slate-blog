@@ -19,6 +19,27 @@ export const GET: APIRoute = async () => {
     priority: 0.8,
   }));
 
+  // 获取所有唯一的标签
+  const tagSet = new Set<string>();
+  posts.forEach((post) => {
+    const postTags = post.data.tags;
+    if (postTags && postTags.length) {
+      postTags.forEach((tag) => {
+        if (tag.trim() !== '') {
+          tagSet.add(tag);
+        }
+      });
+    }
+  });
+
+  // 生成标签页面 URL
+  const tagUrls = Array.from(tagSet).map((tag) => ({
+    loc: `${site}/tags/${encodeURIComponent(tag)}`,
+    lastmod: new Date().toISOString(),
+    changefreq: 'weekly' as const,
+    priority: 0.7,
+  }));
+
   // 静态页面
   const staticPages = [
     {
@@ -30,7 +51,7 @@ export const GET: APIRoute = async () => {
   ];
 
   // 合并所有页面
-  const allPages = [...staticPages, ...postUrls];
+  const allPages = [...staticPages, ...postUrls, ...tagUrls];
 
   // 生成 XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

@@ -48,10 +48,14 @@ const themeScript = `
     <slot name="json-ld">
       <NormalJsonLd title={fullTitle} description={description} image={image} />
     </slot>
-    <script set:html={themeScript}></script>
+    <script set:html={themeScript} />
+    <meta
+      name="google-site-verification"
+      content="fmgce_RNpeUSw6KWbPoH5ifqwZ1LL_cXuQ2Huac8ttE"
+    />
   </head>
   <body class="bg-slate1">
-    <div class="m-auto flex min-h-dvh max-w-180 flex-col px-6 pb-6 pt-18">
+    <div class="m-auto flex min-h-dvh max-w-180 flex-col px-6 pt-18 pb-6">
       <slot name="header">
         <Header />
       </slot>

@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/components/layouts/PageLayout.astro';
+import Button from '@/components/button';
+import slateConfig from '~@/slate.config';
+import i18next from '@/i18n';
+
+export async function getStaticPaths() {
+  const postCollection = await getCollection('post', ({ data }) => {
+    return import.meta.env.DEV || data.draft !== true;
+  });
+
+  // 获取所有唯一的标签
+  const tagSet = new Set<string>();
+  postCollection.forEach((post) => {
+    const postTags = post.data.tags;
+    if (postTags && postTags.length) {
+      postTags.forEach((tag) => {
+        if (tag.trim() !== '') {
+          tagSet.add(tag);
+        }
+      });
+    }
+  });
+
+  // 为每个标签生成一个路径
+  return Array.from(tagSet).map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+
+// 获取该标签下的所有文章
+const allPosts = await getCollection('post', ({ data }) => {
+  return import.meta.env.DEV || data.draft !== true;
+});
+
+const posts = allPosts
+  .filter((post) => {
+    const postTags = post.data.tags || [];
+    return postTags.includes(tag);
+  })
+  .sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime())
+  .map((post) => ({
+    id: post.id,
+    slug: post.slug,
+    url: `/blog/${post.slug}`,
+    data: post.data,
+  }));
+
+const title = `Tag: ${tag} | ${slateConfig.title}`;
+const description = `Articles tagged with "${tag}" - ${slateConfig.description}`;
+---
+
+<PageLayout title={title} description={description}>
+  <div class="mb-16" slot="header">
+    <Button id="back">←</Button>
+  </div>
+
+  <section class="mb-16">
+    <h1 class="text-slate12 text-[40px] leading-tight font-semibold mb-4">
+      Tag: {tag}
+    </h1>
+    <p class="text-slate10 text-xl mb-8">
+      {posts.length} {posts.length === 1 ? 'article' : 'articles'} found
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <div class="text-slate12 text-base">
+      {
+        posts.length > 0 ? (
+          posts.map((item) => (
+            <a
+              class="active:bg-slate4 sm:hover:bg-slate3 flex cursor-pointer flex-col justify-between rounded-lg py-2.5 transition-all active:scale-[0.995] sm:flex-row sm:items-center sm:px-2"
+              href={item.url}
+              title={item.data.title}
+            >
+              <span class="shrink-0">{item.data.title}</span>
+              <span class="border-slate6 mx-8 hidden h-px w-full grow border-t border-dashed sm:flex" />
+              <span class="text-slate8 shrink-0">
+                {item.data.pubDate?.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </span>
+            </a>
+          ))
+        ) : (
+          <p class="text-slate10">No articles found for this tag.</p>
+        )
+      }
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+  const backBtn = document.getElementById('back');
+  backBtn?.addEventListener('click', () => {
+    window.location.href = '/';
+  });
+</script>
+

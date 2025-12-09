@@ -4,7 +4,6 @@ import i18next from '@/i18n';
 import Search from '@/components/search';
 import PageLayout from '@/components/layouts/PageLayout.astro';
 // import Button from '@/components/button';
-import slateConfig from '~@/slate.config';
 
 const postCollection = await getCollection('post', ({ data }) => {
   return import.meta.env.DEV || data.draft !== true;
@@ -86,12 +85,28 @@ const posts = [...postCollection]
   <section class="mb-16">
     <ul class="text-slate10 flex flex-wrap gap-2 text-base">
       {
-        tags.map(({ name, count }) => (
-          <li class="bg-slate3 text-slate10 hover:bg-slate4 hover:text-slate11 block cursor-pointer rounded-full px-4 py-2 transition-all">
-            {name}
-            <sup class="text-slate8 text-[10px]">{count}</sup>
-          </li>
-        ))
+        tags.map(({ name, count }) => {
+          // 如果是 "All" 标签，不添加链接
+          if (name === i18next.t('common.all')) {
+            return (
+              <li class="bg-slate3 text-slate10 hover:bg-slate4 hover:text-slate11 block cursor-pointer rounded-full px-4 py-2 transition-all">
+                {name}
+                <sup class="text-slate8 text-[10px]">{count}</sup>
+              </li>
+            );
+          }
+          return (
+            <li>
+              <a
+                href={`/tags/${encodeURIComponent(name)}`}
+                class="bg-slate3 text-slate10 hover:bg-slate4 hover:text-slate11 block cursor-pointer rounded-full px-4 py-2 transition-all"
+              >
+                {name}
+                <sup class="text-slate8 text-[10px]">{count}</sup>
+              </a>
+            </li>
+          );
+        })
       }
     </ul>
   </section>
