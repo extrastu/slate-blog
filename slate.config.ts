@@ -8,7 +8,7 @@ export default defineConfig({
   site: 'https://aivibe.vercel.app',
   avatar: '/avatar.png',
   title: 'Ai Vibe',
-  description: 'vibe productivity',
+  description: 'vibe coding product collection',
   lastModified: true,
   readTime: true,
   footer: {
