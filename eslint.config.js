@@ -1,3 +1,8 @@
+// Polyfill for structuredClone (Node.js 16 compatibility)
+if (typeof structuredClone === 'undefined') {
+  global.structuredClone = (obj) => JSON.parse(JSON.stringify(obj));
+}
+
 import globals from 'globals';
 import { configs as astroEslintConfigs } from 'eslint-plugin-astro';
 import astroEslintParser from 'astro-eslint-parser';
