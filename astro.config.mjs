@@ -17,7 +17,19 @@ import { remarkReadingTime } from './plugins/remark-reading-time';
 import slateConfig from './slate.config';
 
 function computedIntegrations() {
-  const result = [astroExpressiveCode(), mdx(), react(), sitemap(slateConfig.sitemap)];
+  // 使用自定义 sitemap.xml.ts，不使用插件
+  // 如果需要使用插件，取消下面的注释并删除自定义 sitemap.xml.ts
+  // const sitemapConfig = {
+  //   ...slateConfig.sitemap,
+  //   filter: slateConfig.sitemap?.filter || ((page) => true),
+  // };
+  
+  const result = [
+    astroExpressiveCode(), 
+    mdx(), 
+    react(),
+    // sitemap(sitemapConfig), // 已禁用，使用自定义 sitemap.xml.ts
+  ];
 
   return result;
 }
