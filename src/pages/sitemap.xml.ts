@@ -5,11 +5,14 @@ import slateConfig from '~@/slate.config';
 
 export const GET: APIRoute = async () => {
   const site = slateConfig.site || '';
-  
+
   // 获取所有非草稿文章
-  const posts = await getCollection('post', (entry: CollectionEntry<'post'>) => {
-    return import.meta.env.DEV || entry.data.draft !== true;
-  });
+  const posts = await getCollection(
+    'post',
+    (entry: CollectionEntry<'post'>) => {
+      return import.meta.env.DEV || entry.data.draft !== true;
+    },
+  );
 
   // 生成文章 URL
   const postUrls = posts.map((post: CollectionEntry<'post'>) => ({
@@ -21,10 +24,10 @@ export const GET: APIRoute = async () => {
 
   // 获取所有唯一的标签
   const tagSet = new Set<string>();
-  posts.forEach((post) => {
+  posts.forEach((post: CollectionEntry<'post'>) => {
     const postTags = post.data.tags;
     if (postTags && postTags.length) {
-      postTags.forEach((tag) => {
+      postTags.forEach((tag: string) => {
         if (tag.trim() !== '') {
           tagSet.add(tag);
         }
@@ -63,7 +66,7 @@ ${allPages
     <lastmod>${page.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-  </url>`
+  </url>`,
   )
   .join('\n')}
 </urlset>`;
@@ -74,4 +77,3 @@ ${allPages
     },
   });
 };
-
