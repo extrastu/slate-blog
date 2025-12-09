@@ -1,18 +1,10 @@
 {
-  "name": "slate-blog",
+  "name": "aivibe",
   "version": "1.0.0",
-  "description": "Pure thoughts, simple stories",
+  "description": "AI Vibe - Vibe Coding & AI Tools Collection",
   "type": "module",
-  "homepage": "https://github.com/leezhian/simple-blog.git",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/leezhian/simple-blog.git"
-  },
-  "bugs": {
-    "url": "https://github.com/leezhian/simple-blog.git/issues"
-  },
   "sideEffects": false,
-  "author": "kim, bluepikachu",
+  "author": "extrastu",
   "scripts": {
     "prepare": "husky",
     "dev": "astro dev",
