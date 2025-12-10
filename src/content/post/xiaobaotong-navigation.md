@@ -8,6 +8,8 @@ tags:
 pubDate: 2025-12-09
 ---
 
+![小报童导航 首页截图](/xiaobaotong-navigation-screenshot.png)
+
 ## 关于
 
 你好，我是 **extrastu(益达同学)**
@@ -49,4 +51,4 @@ pubDate: 2025-12-09
 
 - **邮箱**：extrastu@duck.com
 
-:::info访问 [小报童导航](https://extrastu.cn/about) :::
+:::info访问 [小报童导航](https://extrastu.cn) :::

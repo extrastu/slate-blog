@@ -8,6 +8,8 @@ tags:
 pubDate: 2025-12-09
 ---
 
+![Infinity2Chrome 首页截图](/infinity2chrome-screenshot.png)
+
 ## 项目初衷
 
 作为 Infinity 新标签页的老用户，我已经使用这款插件将近 7 年了。它一直是我日常浏览器使用中不可或缺的工具。

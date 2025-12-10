@@ -8,6 +8,8 @@ tags:
 pubDate: 2025-12-09
 ---
 
+![Dia Today 首页截图](/diatoday-screenshot.png)
+
 ## 关于
 
 Dia Today 是一个发现和分享优秀的 Dia Skill 的平台。发现社区创造的强大 Prompt 指令，从 `/today` 到复杂的自动化流程，让 AI 更懂你的需求。
@@ -110,7 +112,4 @@ AI 相关领域热点速递，包括最新模型、论文和行业动态。
 - 联系我们
 - 意见反馈
 
-:::info
-访问 [Dia Today](https://www.diatoday.xyz/)
-:::
-
+:::info访问 [Dia Today](https://www.diatoday.xyz/) :::

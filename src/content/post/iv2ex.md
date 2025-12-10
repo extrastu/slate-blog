@@ -8,6 +8,8 @@ tags:
 pubDate: 2025-12-09
 ---
 
+![iV2EX 首页截图](/iv2ex-screenshot.png)
+
 ## 关于 iV2EX
 
 iV2EX 是一个现代化的 V2EX 客户端，使用 Next.js 构建，提供更好的阅读体验和深色模式支持。
@@ -42,4 +44,4 @@ iV2EX 采用 Next.js 作为核心框架，充分利用了 Next.js 的服务端�
 
 v0 是 Vercel 推出的 AI 驱动的前端开发工具，能够快速生成高质量的 React 组件和完整的 Web 应用。
 
-:::info iV2EX 是一个开源项目，与 V2EX 官方无关。访问 [iV2EX](https://iv2ex.vercel.app/about) | [V2EX 官网](https://www.v2ex.com) :::
+:::info iV2EX 是一个开源项目，与 V2EX 官方无关。访问 [iV2EX](https://iv2ex.vercel.app) :::

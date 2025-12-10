@@ -8,6 +8,8 @@ tags:
 pubDate: 2025-12-09
 ---
 
+![Sidebrowser 首页截图](/sidebrowser-screenshot.png)
+
 ## 关于
 
 Sidebrowser 是一个强大的浏览器扩展，支持 Chrome 和 Firefox，让你在侧边栏中打开网站，实现无缝多任务处理，提升工作效率。
