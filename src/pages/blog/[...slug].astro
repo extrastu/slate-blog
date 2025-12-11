@@ -60,7 +60,7 @@ const formattedPubDate = pubDate.isSame(dayjs(), 'year')
   <div class="blog-content">
     <div class="mb-16">
       <h1>{post.data.title}</h1>
-      <div class="text-slate10 flex items-center gap-2">
+      <div class="text-slate10 flex items-center gap-2 mb-4">
         <span>{formattedPubDate}</span>
         {!!slateConfig.readTime && <span>·</span>}
         {
@@ -73,6 +73,22 @@ const formattedPubDate = pubDate.isSame(dayjs(), 'year')
           )
         }
       </div>
+      {
+        post.data.tags && post.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {
+              post.data.tags.map((tag) => (
+                <a
+                  href={`/tags/${encodeURIComponent(tag)}`}
+                  class="bg-slate3 text-slate10 hover:bg-slate4 hover:text-slate11 inline-block cursor-pointer rounded-full px-4 py-2 text-sm transition-all"
+                >
+                  {tag}
+                </a>
+              ))
+            }
+          </div>
+        )
+      }
     </div>
     <Content />
     {
